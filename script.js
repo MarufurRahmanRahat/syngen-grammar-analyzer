@@ -280,25 +280,40 @@ function computeFirstOfProduction(symbols, firstSets) {
   return result;
 }
 
+//display function LL(1) Parsing Table
 function displayLL1Table(table) {
-  let output = "LL(1) Parsing Table:\n";
   const nonTerminals = Object.keys(table);
-  const terminals = new Set();
+  const terminalsSet = new Set();
   nonTerminals.forEach(nt => {
-    Object.keys(table[nt]).forEach(t => terminals.add(t));
+    Object.keys(table[nt]).forEach(t => terminalsSet.add(t));
   });
 
-  const termList = Array.from(terminals);
-  output += "\t" + termList.join("\t") + "\n";
-  for (const nt of nonTerminals) {
-    output += nt + "\t";
-    for (const t of termList) {
-      output += (table[nt][t] || "") + "\t";
-    }
-    output += "\n";
+  const terminals = Array.from(terminalsSet);
+
+  // Start building HTML table
+  let html = '<table style="border-collapse: collapse; width: 100%;">';
+  html += '<thead><tr><th style="border: 1px solid #444; padding: 8px;">Non-Terminal</th>';
+
+  // Table headers
+  for (const terminal of terminals) {
+    html += `<th style="border: 1px solid #444; padding: 8px;">${terminal}</th>`;
   }
-  return output;
+  html += '</tr></thead><tbody>';
+
+  // Table rows
+  for (const nt of nonTerminals) {
+    html += `<tr><td style="border: 1px solid #444; padding: 8px; font-weight: bold;">${nt}</td>`;
+    for (const t of terminals) {
+      const cell = table[nt][t] || "";
+      html += `<td style="border: 1px solid #444; padding: 8px;">${cell}</td>`;
+    }
+    html += '</tr>';
+  }
+
+  html += '</tbody></table>';
+  return html;
 }
+
 
 
 
@@ -339,7 +354,7 @@ else if (currentSection === 'll1') {
   const firstSets = computeFirstSets(parsedGrammar);
   const followSets = computeFollowSets(parsedGrammar, firstSets, Object.keys(parsedGrammar)[0]);
   const ll1Table = generateLL1Table(parsedGrammar, firstSets, followSets);
-  document.getElementById("outputArea").innerText = displayLL1Table(ll1Table);
+  document.getElementById("outputArea").innerHTML = displayLL1Table(ll1Table);  // Use innerHTML here!
 }
 
 else {
