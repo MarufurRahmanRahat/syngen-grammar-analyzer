@@ -9,7 +9,9 @@ function showSection(section) {
   leftFactoring: "Left Factoring",
   first: "FIRST Set Calculation",
   follow: "FOLLOW Set Calculation",
-  ll1: "LL(1) Parsing Table"
+  ll1: "LL(1) Parsing Table",
+  lexical: "Lexical Analysis"
+
 };
 
   document.getElementById("sectionTitle").innerText = titles[section];
@@ -314,9 +316,58 @@ function displayLL1Table(table) {
   return html;
 }
 
+// lexical analysis function
+function performLexicalAnalysis(code) {
+  const tokens = [];
+  const keywords = ["int", "float", "if", "else", "while", "return", "for", "void", "char", "double", "struct"];
+  const operators = ["+", "-", "*", "/", "=", "==", "!=", "<", ">", "<=", ">=", "++", "--", "&&", "||", "!"];
+  const delimiters = [";", ",", "(", ")", "{", "}"];
+  
+  const tokenRegex = /\s*(\/\/.*|\/\*[\s\S]*?\*\/|==|!=|<=|>=|\+\+|--|&&|\|\||[a-zA-Z_][a-zA-Z0-9_]*|\d+|[+\-*/=<>;(),{}!])\s*/g;
+  let match;
+
+  while ((match = tokenRegex.exec(code)) !== null) {
+    const value = match[1];
+    let type;
+
+    if (value.startsWith("//") || value.startsWith("/*")) {
+      type = "Comment";
+    } else if (keywords.includes(value)) {
+      type = "Keyword";
+    } else if (operators.includes(value)) {
+      type = "Operator";
+    } else if (delimiters.includes(value)) {
+      type = "Delimiter";
+    } else if (/^\d+$/.test(value)) {
+      type = "Number";
+    } else if (/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(value)) {
+      type = "Identifier";
+    } else {
+      type = "Unknown";
+    }
+
+    tokens.push({ type, value });
+  }
+
+  return tokens;
+}
+
+function displayLexicalTokens(tokens) {
+  let html = "<table border='1' style='border-collapse: collapse;'><tr><th>Token</th><th>Type</th></tr>";
+  for (const token of tokens) {
+    html += `<tr><td>${token.value}</td><td>${token.type}</td></tr>`;
+  }
+  html += "</table>";
+  document.getElementById("outputArea").innerHTML = html;
+}
 
 
-
+//extra function for lexical analysis
+function analyzeLexical() {
+  const code = document.getElementById("lexicalInput").value;
+  const tokens = performLexicalAnalysis(code);
+  displayLexicalTokens(tokens);
+}
 
 
 
@@ -355,6 +406,11 @@ else if (currentSection === 'll1') {
   const followSets = computeFollowSets(parsedGrammar, firstSets, Object.keys(parsedGrammar)[0]);
   const ll1Table = generateLL1Table(parsedGrammar, firstSets, followSets);
   document.getElementById("outputArea").innerHTML = displayLL1Table(ll1Table);  // Use innerHTML here!
+}
+
+else if (currentSection === 'lexical') {
+  const tokens = performLexicalAnalysis(input);
+  document.getElementById("outputArea").innerHTML = displayLexicalTokens(tokens);
 }
 
 else {

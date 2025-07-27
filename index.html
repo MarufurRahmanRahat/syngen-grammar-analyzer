@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SynGen: Grammar Analyzer</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <div class="container">
     <div class="sidebar">
@@ -16,15 +18,25 @@
       <button onclick="showSection('first')">4. FIRST Sets</button>
       <button onclick="showSection('follow')">5. FOLLOW Sets</button>
       <button onclick="showSection('ll1')">6. LL(1) Table</button>
+      <button onclick="showSection('lexical')">Lexical Analysis</button>
+
+
+
+
 
     </div>
     <div class="content">
       <h2 id="sectionTitle">Grammar Input</h2>
       <textarea id="inputArea" placeholder="Enter grammar here..."></textarea>
       <button onclick="analyze()">Run</button>
+      <textarea id="lexicalInput" rows="10" cols="50" placeholder="Enter your C/C++ code here..."></textarea>
+      <br>
+      <button onclick="analyzeLexical()">Analyze</button>
+
       <pre id="outputArea"></pre>
     </div>
   </div>
   <script src="script.js"></script>
 </body>
+
 </html>
