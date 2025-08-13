@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SynGen • String Operations</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="js/string.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>String Operations</h2>
+    <button id="btnDetails">1) String Details</button>
+    <button id="btnComments">2) Extract Comments</button>
+    <button id="btnArticles">3) Find Articles (a/an/the)</button>
+    <button id="btnCheckId">4a) Identifier Valid?</button>
+    <button id="btnCheckKey">4b) Keyword Valid?</button>
+    <button id="btnPreps">5) Count Prepositions</button>
+    <button id="btnRegex">6) Test Regex</button>
+    <a class="link-home" href="index.html">← Home</a>
+  </aside>
+
+  <main class="content">
+    <h2>Input</h2>
+    <textarea id="stringInput" placeholder="Paste any string or code here"></textarea>
+
+    <div class="inline">
+      <input id="singleWord" type="text" placeholder="Word to test (identifier/keyword)"/>
+      <input id="regexInput" type="text" placeholder="Regex (e.g., ^[a-z]+$)"/>
+      <input id="regexText" type="text" placeholder="Text to test against regex"/>
+    </div>
+
+    <div id="stringOutput" class="output"></div>
+  </main>
+</body>
+</html>
