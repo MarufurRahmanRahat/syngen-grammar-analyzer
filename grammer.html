@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SynGen • Grammar Tools</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="js/grammar.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>Grammar Tools</h2>
+    <button id="btnLoad">Load Grammar</button>
+    <button id="btnLeftRec">Eliminate Left Recursion</button>
+    <button id="btnLeftFactoring">Left Factoring</button>
+    <button id="btnFirst">FIRST Sets</button>
+    <button id="btnFollow">FOLLOW Sets</button>
+    <button id="btnLL1">LL(1) Table</button>
+    <a class="link-home" href="index.html">← Home</a>
+  </aside>
+
+  <main class="content">
+    <h2 id="title">Grammar Input</h2>
+    <textarea id="grammarInput" placeholder="Example:
+E -> T E'
+E' -> + T E' | ε
+T -> F T'
+T' -> * F T' | ε
+F -> ( E ) | id"></textarea>
+    <div class="actions">
+      <button id="btnRun">Run</button>
+    </div>
+    <div id="outputArea" class="output"></div>
+  </main>
+</body>
+</html>
