@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SynGen • C/C++ Tools</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="js/cpp.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>C/C++ Tools</h2>
+    <button id="btnLex">Analyze (Lexical)</button>
+    <button id="btnParse">Generate Parse Tree</button>
+    <a class="link-home" href="index.html">← Home</a>
+  </aside>
+
+  <main class="content">
+    <h2>Code Input</h2>
+    <textarea id="codeInput" placeholder="Example:
+int main() {
+  int a = b + c * d;
+}"></textarea>
+
+    <div id="outputArea" class="output"></div>
+    <div id="treeArea" class="tree"></div>
+  </main>
+</body>
+</html>
