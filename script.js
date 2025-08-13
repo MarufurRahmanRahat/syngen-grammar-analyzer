@@ -371,6 +371,12 @@ function analyzeLexical() {
 
 
 
+
+
+
+
+
+
 function analyze() {
   const input = document.getElementById("inputArea").value.trim();
   if (!input) {

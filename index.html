@@ -1,42 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SynGen: Grammar Analyzer</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SynGen • Home</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
+<body class="home">
+  <header>
+    <h1>SynGen</h1>
+    <p class="subtitle">Compiler Design Visualizer</p>
+  </header>
 
-<body>
-  <div class="container">
-    <div class="sidebar">
-      <h2>SynGen Menu</h2>
-      <button onclick="showSection('grammar')">1. Grammar Input</button>
-      <button onclick="showSection('leftRec')">2. Left Recursion</button>
-      <button onclick="showSection('leftFactoring')">3. Left Factoring</button>
-      <button onclick="showSection('first')">4. FIRST Sets</button>
-      <button onclick="showSection('follow')">5. FOLLOW Sets</button>
-      <button onclick="showSection('ll1')">6. LL(1) Table</button>
-      <button onclick="showSection('lexical')">Lexical Analysis</button>
+  <main class="cards">
+    <a class="card" href="grammar.html">
+      <h2>Grammar Tools</h2>
+      <p>Left Recursion, Left Factoring, FIRST, FOLLOW, LL(1) Table</p>
+    </a>
+    <a class="card" href="cpp.html">
+      <h2>C/C++ Tools</h2>
+      <p>Lexical Analysis and Parse Tree (LL(1) subset)</p>
+    </a>
+    <a class="card" href="string.html">
+      <h2>String Operations</h2>
+      <p>Length/whitespace/lines, comments, articles, identifiers/keywords, prepositions, regex test</p>
+    </a>
+  </main>
 
-
-
-
-
-    </div>
-    <div class="content">
-      <h2 id="sectionTitle">Grammar Input</h2>
-      <textarea id="inputArea" placeholder="Enter grammar here..."></textarea>
-      <button onclick="analyze()">Run</button>
-      <textarea id="lexicalInput" rows="10" cols="50" placeholder="Enter your C/C++ code here..."></textarea>
-      <br>
-      <button onclick="analyzeLexical()">Analyze</button>
-
-      <pre id="outputArea"></pre>
-    </div>
-  </div>
-  <script src="script.js"></script>
+  <footer>
+    <a href="https://github.com/" target="_blank" rel="noreferrer">Docs</a>
+  </footer>
 </body>
-
 </html>
