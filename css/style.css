@@ -3,8 +3,14 @@
   --bg:#0f172a; --card:#111827; --muted:#1f2937; --text:#e5e7eb;
   --accent:#22d3ee; --accent2:#a78bfa; --border:#334155;
 }
-body { margin:0; font-family: system-ui, Arial, sans-serif; background:var(--bg); color:var(--text); }
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
 
+/* Home Page ---------------------------------------------*/
 header { text-align:center; padding:2rem 1rem; }
 header h1 { margin:0; font-size:2.2rem; letter-spacing:0.5px; }
 .subtitle { opacity:0.8; margin-top:.25rem; }
@@ -13,50 +19,185 @@ header h1 { margin:0; font-size:2.2rem; letter-spacing:0.5px; }
   max-width:1000px; margin:2rem auto; padding:0 1rem;
   display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:1rem;
 }
+
 .card {
-  display:block; background:linear-gradient(135deg, var(--card), var(--muted));
-  border:1px solid var(--border); padding:1.2rem; border-radius:16px; text-decoration:none; color:var(--text);
-  transition: transform .12s ease, border-color .2s ease;
+  display:block;
+  background:linear-gradient(135deg, var(--card), var(--muted));
+  border:1px solid var(--border);
+  padding:1.2rem;
+  border-radius:16px;
+  text-decoration:none;
+  color:var(--text);
+  transition:transform .2s ease, border-color .2s ease;
 }
 .card h2 { margin:.25rem 0 .5rem; }
-.card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.card:hover { transform: translateY(-6px); border-color: var(--accent); }
 
-footer { text-align:center; padding:1rem; opacity:.7; }
+footer {
+  text-align:center;
+  padding:1rem;
+  opacity:.8;
+}
+footer a {
+  text-decoration:none;
+  padding:.6rem 1rem;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:#00111a;
+  border-radius:8px;
+  transition:transform .2s ease;
+}
+footer a:hover {
+  transform:scale(1.05);
+}
 
-.container { display:flex; min-height:100vh; }
+/* 2 Column Layout for Other Pages -----------------------*/
+
 .sidebar {
-  width:260px; padding:1rem; border-right:1px solid var(--border);
+  float:left;
+  width:25%;
+  padding:1rem;
+  border-right:1px solid var(--border);
   background:linear-gradient(180deg, var(--card), #0b1222);
+  /* ami add korsi
+  border: 1px solid white;
+  height: 100%; */
 }
 .sidebar h2 { margin-top:0; }
-.sidebar button, .link-home {
-  width:100%; margin:.5rem 0; padding:.6rem .8rem; border-radius:10px; border:1px solid var(--border);
-  background:#0b1222; color:var(--text); cursor:pointer; text-align:left; display:block; text-decoration:none;
-}
-.sidebar button:hover, .link-home:hover { border-color: var(--accent2); }
 
-.content { flex:1; padding:1rem 1.5rem; }
-.content h2 { margin-top:.2rem; }
-textarea, input[type=text] {
-  width:100%; padding:.75rem .9rem; border-radius:12px; border:1px solid var(--border);
-  background:#0b1222; color:var(--text); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+.sidebar button,
+.sidebar .link-home {
+  width:100%;
+  margin:.5rem 0;
+  padding:.6rem .8rem;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#0b1222;
+  color:var(--text);
+  cursor:pointer;
+  text-align:left;
+  text-decoration:none;
+  transition:all .25s ease;
 }
+.sidebar button:hover,
+.sidebar .link-home:hover {
+  border-color:var(--accent2);
+  transform:translateX(3px);
+}
+
+.content {
+  float:left;
+  width:75%;
+  padding:1rem 1.5rem;
+}
+
+.content h2 { margin-top:.2rem; }
+
+textarea, input[type=text] {
+  width:100%;
+  padding:.75rem .9rem;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#0b1222;
+  color:var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
 textarea { min-height:160px; }
+
 .actions { margin:.6rem 0 1rem; }
 .actions button {
-  background:linear-gradient(90deg, var(--accent), var(--accent2)); color:#00111a; border:none;
-  padding:.6rem 1rem; border-radius:999px; cursor:pointer; margin-right:.5rem; font-weight:600;
+  background:linear-gradient(90deg, var(--accent), var(--accent2));
+  color:#00111a;
+  border:none;
+  padding:.6rem 1rem;
+  border-radius:999px;
+  cursor:pointer;
+  margin-right:.5rem;
+  font-weight:600;
+  transition:transform .25s ease;
 }
+.actions button:hover {
+  transform:scale(1.07);
+}
+
 .output {
-  margin-top:1rem; padding:1rem; background:#0b1222; border:1px solid var(--border); border-radius:12px;
-  overflow:auto; max-height:60vh;
+  margin-top:1rem;
+  padding:1rem;
+  background:#0b1222;
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:auto;
+  max-height:60vh;
 }
-.inline { display:grid; grid-template-columns: 1fr 1fr 1fr; gap:.5rem; margin-top:.6rem; }
+
+.inline {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:.5rem;
+  margin-top:.6rem;
+}
 
 table { width:100%; border-collapse: collapse; margin-top:.5rem; }
-th, td { border:1px solid var(--border); padding:.5rem .6rem; text-align:left; }
+th, td {
+  border:1px solid var(--border);
+  padding:.5rem .6rem;
+  text-align:left;
+}
 th { background:#0c1a2b; }
 
 .tree ul { list-style:none; padding-left:1.2rem; }
 .tree li { margin:.2rem 0; }
-.tree .node { display:inline-block; padding:.15rem .4rem; border-radius:6px; border:1px solid var(--border); background:#0b1222; }
+.tree .node {
+  display:inline-block;
+  padding:.15rem .4rem;
+  border-radius:6px;
+  border:1px solid var(--border);
+  background:#0b1222;
+}
+
+/* Fade animation for page sections */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.sidebar, .content {
+  animation: fadeIn 0.6s ease both;
+}
+
+/* Add spacing before "Home" link in sidebar */
+.sidebar .link-home {
+  margin-top: 1.2rem; /* 👈 pushes it down a bit */
+}
+
+/* And keep the same hover transition */
+.sidebar .link-home:hover {
+  border-color: var(--accent2);
+  transform: translateX(3px);
+}
+
+/* glow + scale for Docs link (footer) */
+footer a {
+  text-decoration:none;
+  padding:.6rem 1rem;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:#00111a;
+  border-radius:8px;
+  transition:transform .2s ease, box-shadow .25s ease;
+}
+
+footer a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--accent2);
+}
+
+/* make sure <pre> inside the output area is visible */
+.output pre {
+  white-space: pre-wrap;
+  color: var(--text);
+}
+
+
+/* Responsive – stacks sidebar on top */
+@media (max-width:768px) {
+  .sidebar, .content { width:100%; float:none; }
+}
